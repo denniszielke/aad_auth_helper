@@ -10,12 +10,11 @@ SVC_APP_NAME=node-aad-svc
 SVC_APP_ID=
 SVC_APP_SECRET=
 SVC_APP_SECRET_ENCODED=
-SVC_APP_URI_ID=https://node-aad-svc
+SVC_APP_URI_ID=https://$TENANT_NAME/node-aad-svc
 
 API_APP_NAME=name-aad-api
 API_APP_ID=
 API_APP_URI_ID=https://$TENANT_NAME/node-aad-api
-API_APP_URI_ID_ENCODED=http%3A%2F%2Fnode-aad-api%2F
 ```
 
 Create service that we will use to authenticate to our api
