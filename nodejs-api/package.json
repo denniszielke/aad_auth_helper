@@ -1,0 +1,14 @@
+{
+  "name": "node-aad-demo",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "passport": "^0.4.0",
+    "passport-azure-ad": "^3.0.12",
+    "restify": "^7.2.1",
+    "restify-plugins": "^1.6.0",
+    "dotenv-extended": "^2.0.2"
+  }
+}
