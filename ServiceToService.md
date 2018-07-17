@@ -15,6 +15,11 @@ SVC_APP_URI_ID=https://$TENANT_NAME/node-aad-svc
 API_APP_NAME=name-aad-api
 API_APP_ID=
 API_APP_URI_ID=https://$TENANT_NAME/node-aad-api
+
+WB_APP_NAME=Azure Blockchain Workbench Web Client
+WB_APP_ID=
+WB_APP_URI_ID=http://$TENANT_NAME.onmicrosoft.com/AzureBlockchainWorkbench/$/WebClient
+WB_APP_URI_ID=$WB_APP_ID
 ```
 
 Create service that we will use to authenticate to our api
@@ -27,9 +32,17 @@ Create api app
 az ad app create --display-name node-aad-svc --homepage http://localhost --identifier-uris https://$TENANT_NAME/node-aad-svc
 ```
 
-Call azure AD to get bearer token
+Call azure AD to get bearer token for api
 ```
 curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d "client_id=$SVC_APP_ID&resource=$API_APP_URI_ID&client_secret=$SVC_APP_SECRET_ENCODED&grant_type=client_credentials" "https://login.microsoftonline.com/$TENANT_ID/oauth2/token"
+```
+
+Call azure AD to get bearer token for workbench
+```
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d "client_id=$SVC_APP_ID&resource=$WB_APP_URI_ID&client_secret=$SVC_APP_SECRET_ENCODED&grant_type=client_credentials" "https://login.microsoftonline.com/$TENANT_ID/oauth2/token"
+```
+
+curl -isS -X GET -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json"  'https://dzbc-uqct4s-api.azurewebsites.net/api/v1/users'
 
 Set bearer token to env variable
 ```
