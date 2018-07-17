@@ -22,12 +22,13 @@ WB_APP_URI_ID=http://$TENANT_NAME.onmicrosoft.com/AzureBlockchainWorkbench/$/Web
 WB_APP_URI_ID=$WB_APP_ID
 ```
 
-Create service that we will use to authenticate to our api
+Create azure ad app that will host our custom api
+
 ```
 az ad app create --display-name node-aad-api --homepage http://localhost --identifier-uris https://$TENANT_NAME/node-aad-api
 ```
 
-Create api app
+Create azure ad app that will be used to create an authentication token to call our custom api
 ```
 az ad app create --display-name node-aad-svc --homepage http://localhost --identifier-uris https://$TENANT_NAME/node-aad-svc
 ```
