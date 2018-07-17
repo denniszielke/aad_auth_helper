@@ -42,11 +42,14 @@ Call azure AD to get bearer token for workbench
 curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d "client_id=$SVC_APP_ID&resource=$WB_APP_URI_ID&client_secret=$SVC_APP_SECRET_ENCODED&grant_type=client_credentials" "https://login.microsoftonline.com/$TENANT_ID/oauth2/token"
 ```
 
-curl -isS -X GET -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json"  'https://dzbc-uqct4s-api.azurewebsites.net/api/v1/users'
-
 Set bearer token to env variable
 ```
 TOKEN=
+```
+
+Try out bearer token
+```
+curl -isS -X GET -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json"  'https://$$$-api.azurewebsites.net/api/v1/users'
 ```
 
 Call our api with the bearer token
